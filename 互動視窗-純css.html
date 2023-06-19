@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- <link href="dist/simple-lightbox.min.css" rel="stylesheet" /> -->
+<!-- As A Vanilla JavaScript Plugin -->
+
+    
+
+<style>
+/* .list {
+  max-width: 400px;
+  margin: 10px auto;
+}
+.lightbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000066;
+  z-index: -1;
+  opacity: 0;
+}
+.lightbox:target {
+  z-index: 1;
+  opacity: 1;
+  transition: 0.5s;
+} */
+
+
+/* Unopened lightbox */
+.lightbox {
+  display: none;
+}
+
+/* Opened lightbox */
+.lightbox:target {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lightbox content */
+.lightbox figcaption {
+  width: 25rem;
+  position: relative;
+  padding: 1.5em;
+  background-color: lightpink;
+}
+
+/* Close button */
+.lightbox .close {
+  position: relative;
+  display: block;
+}
+
+.lightbox .close::after {
+  right: -1rem;
+  top: -1rem;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border-radius: 50%;
+  color: white;
+  content: "×";
+  cursor: pointer;
+}
+
+/* Lightbox overlay */
+.lightbox .close::before {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0,0,0,.7);
+  content: "";
+  cursor: default;
+}
+
+
+
+
+
+
+
+
+a {
+  text-decoration: none;
+  color: #1ab4ff;
+}
+
+/* #wrapper {
+  background: #FFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 50px 0;
+  transition: All 0.5s ease;
+  overflow: scroll;
+}
+#wrapper .container {
+  width: 600px;
+  margin: 0 auto;
+}
+#wrapper p {
+  margin: 10px 0;
+  text-indent: 2em;
+}
+
+.lightbox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0;
+}
+.lightbox .lightbox-overlay {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.lightbox .lightbox-content {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  width: 580px;
+  height: auto;
+  margin-left: -300px;
+  transition: bottom 0.5s ease;
+  z-index: 1;
+  background: #FFF;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+.lightbox .lightbox-content .lightbox-title {
+  border-bottom: 1px #CCC solid;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+.lightbox .lightbox-content .lightbox-close-btn {
+  width: 20px;
+  height: 20px;
+  background: #666;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  border-radius: 13px;
+  border: 3px #EEE solid;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  line-height: 20px;
+  text-indent: -200%;
+  overflow: hidden;
+}
+.lightbox .lightbox-content .lightbox-close-btn:before {
+  content: "";
+  position: absolute;
+  transform: rotate(45deg);
+  border-left: 1px solid #EEE;
+  height: 50%;
+  width: 50%;
+  left: 8px;
+  top: 8px;
+}
+.lightbox .lightbox-content .lightbox-close-btn:after {
+  content: "";
+  position: absolute;
+  transform: rotate(-45deg);
+  border-right: 1px solid #EEE;
+  height: 50%;
+  width: 50%;
+  right: 8px;
+  top: 8px;
+}
+.lightbox:target {
+  opacity: 1;
+  z-index: 1;
+}
+.lightbox:target .lightbox-overlay {
+  opacity: 1;
+}
+.lightbox:target .lightbox-content {
+  bottom: 0;
+} */
+/* .lightbox:target ~ #wrapper {
+  transform: scale(0.9);
+} */
+
+</style>
+</head>
+<body>
+
+  <!-- <a href="images/01.jpg" data-lightbox="image-1" data-title="My caption">Image #1</a>
+
+  <a href="images/02.jpg" data-lightbox="roadtrip">Image #2</a>
+<a href="images/03.jpg" data-lightbox="roadtrip">Image #3</a>
+<a href="images/04.jpg" data-lightbox="roadtrip">Image #4</a>
+
+
+
+  <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+    <div class="portfolio-content h-100">
+      
+      <div class="portfolio-info">
+       
+       
+        <a href="images/01.jpg" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link">456</a>
+        <a href="project-details.html" title="More Details" class="details-link"></a>
+      </div>
+    </div>
+  </div> -->
+  <!-- End Projects Item -->
+
+  <ul>
+    <li><a href="#example1">Open example #1</a></li>
+    <li><a href="#example2">Open example #2</a></li>
+  </ul>
+  
+  <div class="lightbox" id="example1">
+    <figure>
+      <a href="#" class="close"></a>
+      <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Donec felis enim, placerat id eleifend eu, semper vel sem.</figcaption>
+    </figure>
+  </div>
+  
+  <div class="lightbox" id="example2">
+    <figure>
+      <a href="#" class="close"></a>
+      <figcaption>Cras risus odio, pharetra nec ultricies et,
+        mollis ac augue. Nunc et diam quis sapien dignissim auctor.
+        Quisque quis neque arcu, nec gravida magna.</figcaption>
+    </figure>
+  </div>
+
+
+
+
+
+  <!-- <div class='lightbox' id='demo'>
+    <article class='lightbox-content'>
+      <h3 class='lightbox-title'>Title</h3>
+      <p>
+        力到下發不活遊顧高是因我王候候教定作理分算清者的上許如因新此香及年過說展冷很海同。今業每推有。怎命醫合機決嚴了有生進濟細動進人人小治那英名程多！制風力。候教定作理分算清者的上許如因新此香及年過說展冷很海同。今業每推有。怎命醫合機決嚴了面明人然月達就視怕此書的難正簡裡生山門報市多就不發背正合題不今部以
+      </p>
+      <a class='lightbox-close-btn' href='#'>x</a>
+    </article>
+    <a class='lightbox-overlay' href='#'></a>
+  </div>
+  <div class='lightbox' id='demo2'>
+    <article class='lightbox-content'>
+      <h3 class='lightbox-title'>Title 2</h3>
+      <p>
+        力到下發面面明人然月達就視怕此書的難面面明人然月達就視怕此書的難面面明人然月達就視怕此書的難不活遊顧高是因我王候教定作理分算清者的了有生進濟細動進人人小治那英名程多！制風力。候教定作理分算清者的上許如因新此香及年過說展冷很海同。今業每推有。怎命醫合機決嚴了有生進濟細動進人人小治那英名程多！制風力。候教定作理分算清者的上許如因新此香及年過說展冷很海同。今業每推有。怎命醫合機決嚴了有生進濟細動進人人小治那英名程多！制風力。不今部以
+      </p>
+      <a class='lightbox-close-btn' href='#'>x</a>
+    </article>
+    <a class='lightbox-overlay' href='#'></a>
+  </div>
+  <div id='wrapper'>
+    <div class='container'>
+      <p>微讀那！定思找麗有起地母年習味操信點方；愛直府技定三。師樹國問他精了，第說是車？的然成！變制種會目、教德我利？上議麼自：提影還市企室天：笑今並科此旅是童色著他。</p>
+      <p>
+        品現主是的人果市……低布看定機……月很
+        <a href='#demo'>#demo</a>
+        工的就每地口言影至，美不買，
+        <a href='#demo2'>#demo2</a>
+        馬頭是持法定友童讀真做林情的作經們以歷候品法光等部開話，野合式歡？的味家？去使子究作力到下發不活遊顧高是因我王候教定作理分算清者的上許如因新此香及年過說展冷很海同。今業每推有。怎命醫合機決嚴了有生進濟細動進人人小治那英名程多！制風力。安毒行。為手笑在、時們聯熱，法有面面明人然月達就視怕此書的難正簡裡生山門報市多就不發背正合題不今部以，洋中了，府有漸張以那道開一夜，念不可年；止數可地此輪規外旅才館它他？
+      </p>
+      <p>國不動就市奇！響天唱大家愛出合成起自，賣們裡線長說，同差條化聽要老國故育每上似被字過言來大；們風致身來者會非生月體邊，機中再於廣公眼人視許和、背學第一前歌詩就，王日研圖民間這麼是？古大一離深未收識量，比可生名打然是高分情處常。</p>
+    </div>
+  </div> -->
+  
+
+
+
+
+  <!-- <div class="list">
+    <a href="#Rn1Zji"><img src="images/01.jpg"></a>
+    <a href="#H1zVUS"><img src="images/02.jpg"></a>
+    <a href="#fogIDC"><img src="images/03.jpg"></a>
+    <a href="#ZU0vln"><img src="images/04.jpg"></a>
+    <a href="#v2i65J"><img src="images/05.jpg"></a>
+    <a href="#EB69Xj"><img src="images/06.jpg"></a>
+  </div>
+  
+  <a href="#" class="lightbox" id="Rn1Zji">
+    <img src="images/01.jpg" width="300">
+  </a>
+  <a href="#" class="lightbox" id="H1zVUS">
+    <img src="images/02.jpg" width="300">
+  </a>
+  <a href="#" class="lightbox" id="fogIDC">
+    <img src="images/03.jpg" width="300">
+  </a>
+  <a href="#" class="lightbox" id="ZU0vln">
+    <img src="images/04.jpg" width="300">
+  </a>
+  <a href="#" class="lightbox" id="v2i65J">
+    <img src="images/05.jpg" width="300">
+  </a>
+  <a href="#" class="lightbox" id="EB69Xj">
+    <img src="images/06.jpg" width="300">
+  </a> -->
+
+  <!-- <div class="gallery">
+    <a href="images/01.jpg" class="big" rel="rel1">
+      <img src="images/01.jpg" alt="" title="Image 1">
+    </a>
+    <a href="images/02.jpg" class="big" rel="rel1">
+      <img src="images/02.jpg" alt="" title="Image 2">
+    </a>
+  </div> -->
+
+
+  
+
+  <!-- <form method="POST">
+  <input type="button" name="B2" value="站長是帥哥" onClick="alert('謝謝啦！^_^');">
+  <input type="button" name="B1" value="站長是白痴" onClick="if(confirm('你再考慮一次！')) alert('你不想混啦？'); else alert('這才像話......');">
+  </form> -->
+ 
+  
+    
+</body>
+<!-- <script src="dist/simple-lightbox.min.js"></script> -->
+<!-- For legacy browsers -->
+<!-- <script src="dist/simple-lightbox.legacy.min.js"></script> -->
+<!-- As A jQuery Plugin -->
+<!-- <script src="/path/to/cdn/jquery.min.js"></script>
+<script src="dist/simple-lightbox.jquery.min.js"></script> -->
+
+<!-- <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script> -->
+
+</html>
